@@ -1,62 +1,40 @@
 public class Warteschlange {
     private Kunde erster;
 
-    public Warteschlange(){
-
-    }
-
+    public Warteschlange(){};
+    /*
+    gibt den ersten Kunden zurueck
+     */
     public Kunde gibErsten(){
-        return erster;
-    }
 
-    public void entfernen() {
-        Kunde aktuellerKudne = erster ;
-        if( erster!= null){
-            erster = aktuellerKunde.getNachfolger();
-        }
+        return erster;}
+    /*entfernt das erste Element in der Warteschlange und speichert das Zweite als Erstes in erster ab
+     */
+    public void entfernen(){
+        Kunde speicher;
+        speicher=erster.getNachfolger();
+        erster=speicher;
     }
-
+    /*
+    Speicher den mit dem Parameter mitgegebenen Kunden an letzter Stelle in ser Warteschlange
+     */
     public void einfuegen(Kunde pKunde){
-        Kunde aktuellerKunde = erster;
-        if (erster == null){
-            erster = pKunde;
-        }
-        else{
-            while(aktuellerKunde.getNachfolger() != null) {
-                aktuellerKunde = aktuellerKunde.getNachfolger();
-            }
-            aktuellerKunde.setNachfolger(pKunde);
+
+        if (erster==null){
+            erster=pKunde;
+        }else{
+            erster.setNachfolger(pKunde);
         }
     }
-}
-
-public class Kunde
-{
-    private Kunde nachfolger;
-    private String name;
-
-
-    public Kunde(){
-
+    /*
+    gibt wahr zurueck, wenn kein Kunde gespeichert ist
+     */
+    public boolean gibLeer(){
+        if (erster==null){
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    public Kunde(String pName){
-        this.hatName = pName;
-    }
-
-    public void setNachfolger(Kunde pKunde) {
-        nachfolger = pKunde;
-    }
-
-    public Kunde getNachfolger() {
-        return nachfolger;
-    }
-
-    public void setName(String pName){
-        hatName= pName;
-    }
-
-    public String getName(){
-        return hatName;
-    }
 }
