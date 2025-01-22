@@ -1,40 +1,31 @@
 public class Warteschlange {
     private Kunde erster;
 
-    public Warteschlange(){};
-    /*
-    gibt den ersten Kunden zurueck
-     */
+    public Warteschlange(){
+
+    }
+
     public Kunde gibErsten(){
-
-        return erster;}
-    /*entfernt das erste Element in der Warteschlange und speichert das Zweite als Erstes in erster ab
-     */
-    public void entfernen(){
-        Kunde speicher;
-        speicher=erster.getNachfolger();
-        erster=speicher;
+        return erster;
     }
-    /*
-    Speicher den mit dem Parameter mitgegebenen Kunden an letzter Stelle in ser Warteschlange
-     */
+
+    public void entfernen() {
+        Kunde aktuellerKunde = erster ;
+        if( erster!= null){
+            erster = aktuellerKunde.getNachfolger();
+        }
+    }
+
     public void einfuegen(Kunde pKunde){
-
-        if (erster==null){
-            erster=pKunde;
-        }else{
-            erster.setNachfolger(pKunde);
+        Kunde aktuellerKunde = erster;
+        if (erster == null){
+            erster = pKunde;
+        }
+        else{
+            while(aktuellerKunde.getNachfolger() != null) {
+                aktuellerKunde = aktuellerKunde.getNachfolger();
+            }
+            aktuellerKunde.setNachfolger(pKunde);
         }
     }
-    /*
-    gibt wahr zurueck, wenn kein Kunde gespeichert ist
-     */
-    public boolean gibLeer(){
-        if (erster==null){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
 }
