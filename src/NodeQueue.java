@@ -1,10 +1,10 @@
-public class Node<E> {
+public class NodeQueue<E> {
 
     private E content;  // Der Inhalt des Knotens
-    private Node<E> nextNode;  // Verweis auf den nächsten Knoten
+    private NodeQueue<E> nextNode;  // Verweis auf den nächsten Knoten
 
     // Konstruktor, um den Inhalt des Knotens zu setzen
-    public Node(E pContent) {
+    public NodeQueue(E pContent) {
         this.content = pContent;
         this.nextNode = null;  // Der nächste Knoten ist zu Beginn null
     }
@@ -20,12 +20,12 @@ public class Node<E> {
     }
 
     // Getter für den nächsten Knoten
-    public Node<E> getNextNode() {
+    public NodeQueue<E> getNextNode() {
         return nextNode;
     }
 
     // Setter für den nächsten Knoten
-    public void setNextNode(Node<E> nextNode) {
+    public void setNextNode(NodeQueue<E> nextNode) {
         this.nextNode = nextNode;
     }
 }
