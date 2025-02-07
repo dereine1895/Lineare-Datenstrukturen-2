@@ -10,7 +10,7 @@ public class Verwaltung {
 
     public Verwaltung() {
         scanner = new Scanner(System.in);
-        Warteschlange warteschlange = new Warteschlange();
+        Stack<Kunde> speichersystem = new Stack<>();
 
         while (true) {
             System.out.println("== HAUPTMENÜ ==");
@@ -23,18 +23,13 @@ public class Verwaltung {
 
             if (option == 1) {
                 System.out.println("Wie viele?");
-                int anzahl = scanner.nextInt();
-                for (int i = 0; i < anzahl; i++) {
-                    warteschlange.einfuegen(new Kunde("Kunde " + i));
+                option = scanner.nextInt();
+                for (int i = 0; i < option; i++) {
+                   speichersystem.add(new Kunde("" + i));
                 }
             } else if (option == 2) {
-                Kunde ersterKunde = warteschlange.gibErsten();
-                if (ersterKunde != null) {
-                    System.out.println("Erster Kunde: " + ersterKunde.getName());
-                    warteschlange.entfernen();
-                } else {
-                    System.out.println("Die Warteschlange ist leer.");
-                }
+                System.out.println(speichersystem.getContent().getName());
+                speichersystem.remove();
             }
         }
     }
