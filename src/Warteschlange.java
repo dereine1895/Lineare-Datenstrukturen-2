@@ -1,33 +1,36 @@
-public class Warteschlange {
-    private Kunde erster;
+public class Warteschlange <E>{
+    private NodeQueue<E> erster;
+    private NodeQueue<E> letzter;
 
     public Warteschlange() {
 
     }
 
-    public Kunde gibErsten() {
-        return erster;  // Wenn die Warteschlange leer ist, wird null zurückgegeben
+    public E gibErsten() {
+        if(erster != null) {
+            return erster.getContent();
+            // Wenn die Warteschlange leer ist, wird null zurückgegeben
+        }
+        return null;
     }
 
-    public void entfernen() {
+    public void remove() {
         if (erster != null) {
-            erster = erster.getNachfolger();
+            erster = erster.getNextNode();
         }
     }
 
-    public void einfuegen(Kunde pKunde) {
-        if (pKunde == null) {
+    public void add(E content) {
+        if (content == null) {
             throw new IllegalArgumentException("Kunde darf nicht null sein");
         }
 
-        if (erster == null) {
-            erster = pKunde;
+        if (letzter == null) {
+            letzter = new NodeQueue<>(content);
+            erster = new NodeQueue<>(content);
         } else {
-            Kunde aktuellerKunde = erster;
-            while (aktuellerKunde.getNachfolger() != null) {
-                aktuellerKunde = aktuellerKunde.getNachfolger();
-            }
-            aktuellerKunde.setNachfolger(pKunde);
+           letzter.setNextNode(new NodeQueue<>(content));
+           letzter = new NodeQueue<>(content);
         }
     }
 }
