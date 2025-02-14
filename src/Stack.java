@@ -2,7 +2,7 @@ public class Stack<E> {
     private NodeStack<E> top;
 
 
-    private static class NodeStack<E> {
+    private class NodeStack<E> {
         E content;
         NodeStack<E> next;
 
@@ -26,7 +26,10 @@ public class Stack<E> {
         return top.content;
     }
 
-
+    /**
+     *
+     * @param content
+     */
     public void add(E content) {
         NodeStack<E> newNode = new NodeStack<>(content);
         newNode.next = top;
@@ -44,6 +47,9 @@ public class Stack<E> {
 
 
     public boolean isEmpty() {
-        return top == null;
+        if (top == null) {
+            return true;
+        }
+        return false;
     }
 }
