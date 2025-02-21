@@ -165,10 +165,10 @@ public class Verwaltung {
                         System.out.println("Die Liste ist leer.");
                     } else {
                         if (liste.Erster.getNachfolger() == null) {
-                            System.out.println("Erster Kunde in der Liste: " + liste.Erster.getContent().name);
+                            System.out.println("Erster Kunde in der Liste: " + liste.Erster.getContent().getName());
                         } else {
                             while (liste.Aktueller != null) {
-                                System.out.println("Kunde: " + liste.Aktueller.getContent().name);
+                                System.out.println("Kunde: " + liste.Aktueller.getContent().getName());
                                 liste.Aktueller = liste.Aktueller.getNachfolger();
                             }
                             if (liste.Aktueller == null) {

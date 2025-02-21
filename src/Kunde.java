@@ -1,23 +1,18 @@
 public class Kunde
 {
-    private Kunde nachfolger;
-    public String name;
+    private String name;
+    private boolean getreankeErhalten;
+    private int Geld;
+    private String wunschGetreank;
+
 
 
     public Kunde(){
 
     }
 
-    public Kunde(String pName){
+    public Kunde(String pName, String pWunschGetreank){
         this.name = pName;
-    }
-
-    public void setNachfolger(Kunde pKunde) {
-        nachfolger = pKunde;
-    }
-
-    public Kunde getNachfolger() {
-        return nachfolger;
     }
 
     public void setName(String pName){
@@ -27,4 +22,5 @@ public class Kunde
     public String getName(){
         return name;
     }
+    public Getraenk getGetreank()
 }
