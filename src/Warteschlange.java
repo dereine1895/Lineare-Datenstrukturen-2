@@ -14,13 +14,13 @@ public class Warteschlange <E>{
         return null;
     }
 
-    public void remove() {
+    public void entfernen() {
         if (erster != null) {
             erster = erster.getNextNode();
         }
     }
 
-    public void add(E content) {
+    public void einfuegen(E content) {
         if (content == null) {
             throw new IllegalArgumentException("Kunde darf nicht null sein");
         }
