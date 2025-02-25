@@ -1,9 +1,9 @@
 public class Kunde
 {
     private String name;
-    private boolean getreankeErhalten;
+    private boolean getraenkeErhalten;
     private int Geld;
-    private String wunschGetreank;
+    private String wunschGetraenk;
 
 
 
@@ -11,7 +11,7 @@ public class Kunde
 
     }
 
-    public Kunde(String pName, String pWunschGetreank){
+    public Kunde(String pName, String pWunschGetraenk){
         this.name = pName;
     }
 
@@ -22,5 +22,31 @@ public class Kunde
     public String getName(){
         return name;
     }
-    public Getraenk getGetreank()
+    public Getraenk getGetraenk(){
+
+    }
+    public Rechnung getRechnung(){
+
+    }
+    public void setGetraenk(Getraenk pGetraenk){
+
+    }
+    public void setRechnung(Rechnung pRechnung){
+
+    }
+    public void setGetraenkeErhalten(boolean pErhalten){
+
+    }
+    public boolean getGetraenkErhalten(){
+
+    }
+    public void setGeld(int pGeld){
+
+    }
+    public int getGeld(){
+
+    }
+    public String getWunschGetraenk(){
+
+    }
 }
