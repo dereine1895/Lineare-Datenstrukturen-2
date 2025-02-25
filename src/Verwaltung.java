@@ -6,16 +6,14 @@ public class Verwaltung {
 
     public static void main(String[] args) {
         new Verwaltung();
-        System.out.println("Herzlich willkommen zu Zeichenketten verschluesselerer!");
+
     }
 
     public Verwaltung() {
         scanner = new Scanner(System.in);
-
-        // Instanzierung der Warteschlange, des Stacks und der Liste
         Warteschlange<Kunde> warteschlange = new Warteschlange<>();
-        Stack<Kunde> stack = new Stack<>();
-        List<Kunde> list = new List<>();
+        Stack<Rechnung> rechnungStack = new Stack<>();
+        List<Getraenk> getraenkList = new List<>();
 
         while (true) {
             System.out.println("== HAUPTMENÜ ==");
@@ -31,10 +29,10 @@ public class Verwaltung {
                     verwalteWarteschlange(warteschlange);
                     break;
                 case 2:
-                    verwalteStack(stack);
+                    verwalteStack(rechnungStack);
                     break;
                 case 3:
-                    verwalteListe(list);
+                    verwalteListe(getraenkList);
                     break;
                 case 4:
                     System.out.println("Programm beendet.");
@@ -45,6 +43,7 @@ public class Verwaltung {
             }
         }
     }
+
 
     // Warteschlangen-Optionen
     private void verwalteWarteschlange(Warteschlange<Kunde> warteschlange) {
