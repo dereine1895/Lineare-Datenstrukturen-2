@@ -30,26 +30,24 @@ public class Stack<E> {
      *
      * @param content
      */
-    public void add(E content) {
+    public void push(E content) {
         NodeStack<E> newNode = new NodeStack<>(content);
         newNode.next = top;
         top = newNode;
     }
 
 
-    public void remove() {
+    public E pop() {
         if (top == null) {
             System.out.println("Stack ist leer!");
-        } else {
-            top = top.next;
+            return null;
         }
+        E content = top.content;
+        top = top.next;
+        return content;
     }
 
-
     public boolean isEmpty() {
-        if (top == null) {
-            return true;
-        }
-        return false;
+        return top == null;
     }
 }

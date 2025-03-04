@@ -1,12 +1,10 @@
 import java.util.Scanner;
 
 public class Verwaltung {
-
     private Scanner scanner;
 
     public static void main(String[] args) {
         new Verwaltung();
-
     }
 
     public Verwaltung() {
@@ -44,8 +42,6 @@ public class Verwaltung {
         }
     }
 
-
-    // Warteschlangen-Optionen
     private void verwalteWarteschlange(Warteschlange<Kunde> warteschlange) {
         while (true) {
             System.out.println("== WARTESCHLANGEN MENÜ ==");
@@ -73,11 +69,10 @@ public class Verwaltung {
                     warteschlange.einfuegen(kundeM);
                     break;
                 case 3:
-
                     warteschlange.entfernen();
                     break;
                 case 4:
-                    Kunde hilfeWarteschlange = (Kunde) warteschlange.gibErsten();
+                    Kunde hilfeWarteschlange = warteschlange.gibErsten();
                     if (hilfeWarteschlange != null) {
                         System.out.println("Erster Kunde in der Warteschlange: " + hilfeWarteschlange.getName());
                     } else {
@@ -93,8 +88,7 @@ public class Verwaltung {
         }
     }
 
-    // Stack-Optionen
-    private void verwalteStack(Stack<Kunde> stack) {
+    private void verwalteStack(Stack<Rechnung> rechnungStack) {
         while (true) {
             System.out.println("== STACK MENÜ ==");
             System.out.println("[1] Hinzufügen zum Stack");
@@ -106,18 +100,18 @@ public class Verwaltung {
 
             switch (option) {
                 case 1:
-                    System.out.println("Namen des Kunden angeben, der zum Stack hinzugefügt werden soll:");
-                    String stackName = scanner.nextLine();
-                    Kunde stackKunde = new Kunde(stackName);
-                    stack.add(stackKunde);
+                    System.out.println("Beschreibung der Rechnung angeben, die zum Stack hinzugefügt werden soll:");
+                    String beschreibung = scanner.nextLine();
+                    Rechnung rechnung = new Rechnung(beschreibung);
+                    rechnungStack.push(rechnung);
                     break;
                 case 2:
-                    stack.remove();
+                    rechnungStack.pop();
                     break;
                 case 3:
-                    Kunde hilfeStack = stack.getContent();
+                    Rechnung hilfeStack = rechnungStack.getContent();
                     if (hilfeStack != null) {
-                        System.out.println("Oberster Kunde im Stack: " + hilfeStack.getName());
+                        System.out.println("Oberste Rechnung im Stack: " + hilfeStack.getBeschreibung());
                     } else {
                         System.out.println("Der Stack ist leer.");
                     }
@@ -131,8 +125,7 @@ public class Verwaltung {
         }
     }
 
-    // Liste-Optionen
-    private void verwalteListe(List<Kunde> liste) {
+    private void verwalteListe(List<Getraenk> getraenkList) {
         while (true) {
             System.out.println("== LISTE MENÜ ==");
             System.out.println("[1] Hinzufügen zur Liste");
@@ -145,34 +138,28 @@ public class Verwaltung {
 
             switch (option) {
                 case 1:
-                    System.out.println("Namen des Kunden angeben, der zur Liste hinzugefügt werden soll:");
-                    String listeName = scanner.nextLine();
-                    Kunde listeKunde = new Kunde(listeName);
-                    liste.append(listeKunde);
+                    System.out.println("Namen des Getränks angeben, das zur Liste hinzugefügt werden soll:");
+                    String getraenkName = scanner.nextLine();
+                    Getraenk getraenk = new Getraenk(getraenkName);
+                    getraenkList.append(getraenk);
                     break;
                 case 2:
-                    System.out.println("Namen des Kunden angeben, der an der aktuellen Position eingefügt werden soll:");
+                    System.out.println("Namen des Getränks angeben, das an der aktuellen Position eingefügt werden soll:");
                     String insertName = scanner.nextLine();
-                    Kunde insertKunde = new Kunde(insertName);
-                    liste.insert(insertKunde);
+                    Getraenk insertGetraenk = new Getraenk(insertName);
+                    getraenkList.insert(insertGetraenk);
                     break;
                 case 3:
-                    liste.remove();
+                    getraenkList.remove();
                     break;
                 case 4:
-                    if (liste.isEmpty()) {
+                    if (getraenkList.isEmpty()) {
                         System.out.println("Die Liste ist leer.");
                     } else {
-                        if (liste.Erster.getNachfolger() == null) {
-                            System.out.println("Erster Kunde in der Liste: " + liste.Erster.getContent().getName());
-                        } else {
-                            while (liste.Aktueller != null) {
-                                System.out.println("Kunde: " + liste.Aktueller.getContent().getName());
-                                liste.Aktueller = liste.Aktueller.getNachfolger();
-                            }
-                            if (liste.Aktueller == null) {
-                                liste.Aktueller = liste.Erster;
-                            }
+                        getraenkList.toFirst();
+                        while (getraenkList.Aktueller != null) {
+                            System.out.println("Getränk: " + getraenkList.Aktueller.getContent().getName());
+                            getraenkList.next();
                         }
                     }
                     break;
